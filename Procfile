@@ -1,0 +1,1 @@
+web: gunicorn pgp.wsgi --log-file -
