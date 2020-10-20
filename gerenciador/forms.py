@@ -2,11 +2,11 @@ from django import forms
 
 
 class NewLinkForm(forms.Form):
-    link = forms.CharField()
+    link = forms.URLField()
 
     def valid_link(self):
         return (
-            'medium.com' in self.cleaned_data['link']
+            'https://medium.com' in self.cleaned_data['link'][:18]
             and ' ' not in self.cleaned_data['link']
         )
 
