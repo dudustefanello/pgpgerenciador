@@ -2,3 +2,5 @@ django
 gunicorn
 psycopg2
 django_heroku
+beautifulsoup4
+requests
