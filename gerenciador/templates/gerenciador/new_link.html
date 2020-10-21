@@ -1,18 +1,17 @@
 {% extends 'gerenciador/base.html' %}
 
-{% block dasboard_class %}active{% endblock %}
+{% load bootstrap4 %}
 
+{% block dasboard_class %}active{% endblock %}
 {% block titulo_pagina %}Página inicial{% endblock %}
 
 {% block pagebody %}
-
   <div class="card pd-20 pd-sm-40">
     <p class="mg-b-20 mg-sm-b-30">Insira aqui um link para vizualizá-lo de forma limpa</p>
     <form method="post">{% csrf_token %}
       {{ mensagem }}
-      {{ form.as_p }}
+      {% bootstrap_field form.link show_label=False %}
       <button type="submit" class="btn btn-info">Abrir</button>
     </form>
   </div>
-
 {% endblock %}
