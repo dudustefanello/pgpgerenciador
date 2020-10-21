@@ -9,7 +9,16 @@
   <div class="card pd-20 pd-sm-40">
     <p class="mg-b-20 mg-sm-b-30">Insira aqui um link para vizualizá-lo de forma limpa</p>
     <form method="post">{% csrf_token %}
-      {{ mensagem }}
+
+      {% if mensagem %}
+        <div class="alert alert-danger mg-b-20" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          {{ mensagem }}
+        </div>
+      {% endif %}
+
       {% bootstrap_field form.link show_label=False %}
       <button type="submit" class="btn btn-info">Abrir</button>
     </form>
