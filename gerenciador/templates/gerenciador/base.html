@@ -156,13 +156,13 @@
     <div id="mainMenu" class="tab-pane active">
       <ul class="nav am-sideleft-menu">
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="" class="nav-link {% block dasboard_class %}{% endblock %}">
             <i class="icon ion-ios-home-outline"></i>
             <span>Dashboard</span>
           </a>
         </li><!-- nav-item -->
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="" class="nav-link {% block meus_links_class %}{% endblock %}">
             <i class="icon ion-ios-briefcase-outline"></i>
             <span>Meus links</span>
           </a>
@@ -173,7 +173,7 @@
 </div><!-- am-sideleft -->
 
 <div class="am-pagetitle">
-  <h5 class="am-title">Página inicial</h5>
+  <h5 class="am-title">{% block titulo_pagina %}{% endblock %}</h5>
   <form id="searchBar" class="search-bar" action="">
     <div class="form-control-wrapper">
       <input type="search" class="form-control bd-0" placeholder="Search...">
