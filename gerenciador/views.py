@@ -20,20 +20,10 @@ class NewLinkView(FormView):
         return result
 
 
-def teste(request):
-    return HttpResponse('O link é ' + request.GET['link'])
-
-
-
 class GetLinkText(TemplateView):
     template_name = 'gerenciador/text.html'
 
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        context.update({'link': request.GET['link']})
-        return self.render_to_response(context)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update({'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, velit sequi tempore, ad voluptatem repellendus nemo veniam officia facere natus provident quisquam ut facilis iure quod vero quos esse accusamus?'})
+        context.update({'link': self.request.GET['link'] ,'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, velit sequi tempore, ad voluptatem repellendus nemo veniam officia facere natus provident quisquam ut facilis iure quod vero quos esse accusamus?'})
         return context

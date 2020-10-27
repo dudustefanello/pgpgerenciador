@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from gerenciador.views import NewLinkView, teste, GetLinkText
+from gerenciador.views import NewLinkView, GetLinkText
 
 urlpatterns = [
     path('', NewLinkView.as_view(), name='index'),
