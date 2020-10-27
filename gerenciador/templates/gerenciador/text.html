@@ -1,0 +1,23 @@
+{% extends 'gerenciador/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block dasboard_class %}active{% endblock %}
+{% block titulo_pagina %}Texto{% endblock %}
+
+{% block pagebody %}
+
+        <h4>O link é:</h4>
+        <a href="{{link}}">{{link}}</a>
+        <br><br><br>
+
+
+        <h1>Texto:</h1>
+
+        {% if text %}
+            <p class="font-italic"> 
+                {{text}}
+            </p>
+        {% endif %}
+
+{% endblock %}
