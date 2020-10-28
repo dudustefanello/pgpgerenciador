@@ -8,10 +8,9 @@
   <div class="card pd-20 pd-sm-40">
 
     {% if text %}
-      <p>
-        {{ text }}
-      </p>
+      {{ text|safe }}
     {% endif %}
 
   </div>
 {% endblock %}
+
