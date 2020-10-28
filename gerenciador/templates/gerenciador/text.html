@@ -2,22 +2,16 @@
 
 {% load bootstrap4 %}
 
-{% block dasboard_class %}active{% endblock %}
-{% block titulo_pagina %}Texto{% endblock %}
+{% block titulo_pagina %}Visualização{% endblock %}
 
 {% block pagebody %}
+  <div class="card pd-20 pd-sm-40">
 
-        <h4>O link é:</h4>
-        <a href="{{link}}">{{link}}</a>
-        <br><br><br>
+    {% if text %}
+      <p>
+        {{ text }}
+      </p>
+    {% endif %}
 
-
-        <h1>Texto:</h1>
-
-        {% if text %}
-            <p class="font-italic"> 
-                {{text}}
-            </p>
-        {% endif %}
-
+  </div>
 {% endblock %}
