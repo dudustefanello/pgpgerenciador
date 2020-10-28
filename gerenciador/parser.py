@@ -39,7 +39,7 @@ def attrs_filter(attrs):
 
 
 def content_filter(tag):
-    if not hasattr(tag, 'contents'):
+    if not hasattr(tag, "contents"):
         return escape(str(tag))
 
     if tag.name == "figure":
