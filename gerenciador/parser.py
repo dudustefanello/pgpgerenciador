@@ -29,7 +29,10 @@ def figure_filter(figure):
     if noscript is None:
         return ""
     img_src = re.search(r'et=".*"', str(noscript)).group(0).split('"')[1].split()[-2]
-    return f'<figure><img src="{img_src}" />{get_figcaption(figure.figcaption)}</figure>'
+    return (
+        f'<figure><img src="{img_src}" style="max-width: 100%" />'
+        f'{get_figcaption(figure.figcaption)}</figure>'
+    )
 
 
 def attrs_filter(attrs):
