@@ -25,9 +25,9 @@ def figure_filter(figure):
     def get_figcaption(figcaption):
         return content_filter(figcaption) if figcaption else ""
 
-    noscript = figure.find('noscript')
+    noscript = figure.find("noscript")
     if noscript is None:
-        return ''
+        return ""
     img_src = re.search(r'et=".*"', str(noscript)).group(0).split('"')[1].split()[-2]
     return f'<figure><img src="{img_src}" />{get_figcaption(figure.figcaption)}</figure>'
 
@@ -42,7 +42,7 @@ def content_filter(tag):
     if not hasattr(tag, 'contents'):
         return escape(str(tag))
 
-    if tag.name == 'figure':
+    if tag.name == "figure":
         return figure_filter(tag)
 
     tag_content = "".join(
@@ -64,4 +64,3 @@ def parse(html_content):
     main_content = soup.article.div.section
 
     return content_filter(main_content)
-
