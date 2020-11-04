@@ -28,7 +28,11 @@ def figure_filter(figure):
     noscript = figure.find("noscript")
     if noscript is None:
         return ""
-    img_src = re.search(r'et=".*"', str(noscript)).group(0).split('"')[1].split()[-2]
+    try:
+        img_src = re.search(r'et=".*"', str(noscript)).group(0).split('"')[1].split()[-2]
+    except AttributeError:
+        return ""
+
     return (
         f'<figure><img src="{img_src}" style="max-width: 100%" />'
         f'{get_figcaption(figure.figcaption)}</figure>'
@@ -64,6 +68,5 @@ def content_filter(tag):
 
 def parse(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
-    main_content = soup.article
 
-    return content_filter(main_content)
+    return content_filter(soup.article)
