@@ -33,6 +33,7 @@ class GetLinkText(TemplateView):
                     content = parse(response.content)
                     if content is None:
                         raise AttributeError
+                    return content
                 except AttributeError:
                     pass
         except requests.exceptions.Timeout:
