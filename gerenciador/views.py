@@ -30,7 +30,9 @@ class GetLinkText(TemplateView):
             response = requests.get(link, timeout=2)
             if response.status_code == 200:
                 try:
-                    return parse(response.content)
+                    content = parse(response.content)
+                    if content is None:
+                        raise AttributeError
                 except AttributeError:
                     pass
         except requests.exceptions.Timeout:
@@ -46,4 +48,3 @@ class GetLinkText(TemplateView):
             }
         )
         return context
-

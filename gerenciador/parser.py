@@ -64,6 +64,6 @@ def content_filter(tag):
 
 def parse(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
-    main_content = soup.article.div.section
+    main_content = soup.article
 
     return content_filter(main_content)
