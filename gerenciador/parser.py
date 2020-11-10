@@ -69,4 +69,7 @@ def content_filter(tag):
 def parse(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
 
-    return content_filter(soup.article)
+    if soup.article:
+        return content_filter(soup.article)
+
+    return None
