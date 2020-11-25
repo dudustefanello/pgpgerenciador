@@ -1,0 +1,30 @@
+{% extends 'gerenciador/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block meus_links_class %}active{% endblock %}
+{% block titulo_pagina %}Meus links{% endblock %}
+
+{% block pagebody %}
+<div class="card pd-20 pd-sm-40">
+    <h6 class="card-body-title">Meus links</h6>
+    <p class="mg-b-20 mg-sm-b-30">Clique no link para abrí-lo</p>
+
+    <div class="table-responsive">
+      <table class="table mg-b-0">
+        <thead>
+          <tr>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+          <tr>
+            <td><a href="{{ object.link }}">{{ object.link }}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div><!-- card -->
+{% endblock %}
