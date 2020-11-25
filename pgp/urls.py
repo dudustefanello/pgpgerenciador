@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from gerenciador.views import NewLinkView, GetLinkText
+from gerenciador.views import NewLinkView, GetLinkText, LinkList
 
 urlpatterns = [
     path('', NewLinkView.as_view(), name='index'),
-    path('text', GetLinkText.as_view(), name='text'),
+    path('text/', GetLinkText.as_view(), name='text'),
+    path('list/', LinkList.as_view(), name='list'),
     path('admin/', admin.site.urls),
 ]

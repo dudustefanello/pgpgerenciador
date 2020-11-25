@@ -1,7 +1,8 @@
 import requests
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, ListView, TemplateView
 
 from gerenciador.forms import NewLinkForm
+from gerenciador.models import LinksSalvos
 from gerenciador.parser import parse
 
 
@@ -49,3 +50,8 @@ class GetLinkText(TemplateView):
             }
         )
         return context
+
+
+class LinkList(ListView):
+    model = LinksSalvos
+    template_name = 'gerenciador/list_link.html'
