@@ -124,4 +124,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'c7ac54345a06f5'
+EMAIL_HOST_PASSWORD = '7b10b86fe56333'
+EMAIL_PORT = '2525'
+
 django_heroku.settings(locals())
