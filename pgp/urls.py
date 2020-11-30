@@ -16,10 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
+# TEMPLATE CADASTRO DE USUÁRIO #
+from django.conf.urls import url
+from gerenciador.views import signup
+
+
 from gerenciador.views import NewLinkView, GetLinkText
+
 
 urlpatterns = [
     path('', NewLinkView.as_view(), name='index'),
     path('text', GetLinkText.as_view(), name='text'),
     path('admin/', admin.site.urls),
+     url(r'^signup/$', signup, name='signup'),
 ]
