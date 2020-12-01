@@ -1,0 +1,16 @@
+{% extends 'gerenciador/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block titulo_pagina %}SignUp{% endblock %}
+
+{% block pagebody %}
+<div class="card pd-20 pd-sm-40">
+  <p class="mg-b-20 mg-sm-b-30">SignUp</p>
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button type="submit">Sign up</button>
+    </form>
+  </div>
+{% endblock %}
