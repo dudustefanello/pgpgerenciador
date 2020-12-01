@@ -27,6 +27,7 @@ SECRET_KEY = 'gskd3&abptcc1zgw_6a6%e8s!2_y1jh1e1ha*hvkxk+)cn71sc'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+SITE_URL = os.environ.get('SITE_URL') or 'http://localhost:8000'
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gerenciador',
     'bootstrap4',
+    'email_confirmation'
 ]
 
 MIDDLEWARE = [
@@ -128,5 +130,9 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'c7ac54345a06f5'
 EMAIL_HOST_PASSWORD = '7b10b86fe56333'
 EMAIL_PORT = '2525'
+
+# Tempo para o token de confirmação de email expirar em dias
+EMAIL_CONFIRMATION_EXPIRATION_TIME=7
+EMAIL_CONFIRMATION_FROM='no-replay@gerenciado.com.br'
 
 django_heroku.settings(locals())

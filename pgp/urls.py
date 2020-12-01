@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from gerenciador.views import NewLinkView, GetLinkText
+from email_confirmation.views import email_confirmation
 
 urlpatterns = [
     path('', NewLinkView.as_view(), name='index'),
     path('text', GetLinkText.as_view(), name='text'),
+    path('email_confirmation', email_confirmation, name='token_validation'),
     path('admin/', admin.site.urls),
 ]
