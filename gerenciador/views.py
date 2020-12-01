@@ -1,5 +1,10 @@
 import requests
-from django.views.generic import FormView, ListView, TemplateView
+
+from django.views.generic import FormView, TemplateView, CreateView, ListView
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+from gerenciador.forms import SignUpForm
+from django.urls import reverse_lazy
 
 from gerenciador.forms import NewLinkForm
 from gerenciador.models import LinksSalvos
@@ -55,3 +60,9 @@ class GetLinkText(TemplateView):
 class LinkList(ListView):
     model = LinksSalvos
     template_name = 'gerenciador/list_link.html'
+
+    
+class SignUpView(CreateView):
+    template_name = "gerenciador/signup.html"
+    form_class = SignUpForm
+    success_url = reverse_lazy('index')
