@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView
 from django.urls import path
 
-from gerenciador.views import NewLinkView, GetLinkText
+from gerenciador.views import NewLinkView, GetLinkText, SignUpView
+
 
 urlpatterns = [
     path('', NewLinkView.as_view(), name='index'),
     path('text', GetLinkText.as_view(), name='text'),
     path('login/', LoginView.as_view(), name='login'),
     path('admin/', admin.site.urls),
+    path('signup/', SignUpView.as_view(), name='signup'),
 ]
