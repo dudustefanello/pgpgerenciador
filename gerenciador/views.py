@@ -1,5 +1,9 @@
 import requests
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, TemplateView, CreateView
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+from gerenciador.forms import SignUpForm
+from django.urls import reverse_lazy
 
 from gerenciador.forms import NewLinkForm
 from gerenciador.parser import parse
@@ -49,3 +53,8 @@ class GetLinkText(TemplateView):
             }
         )
         return context
+
+class SignUpView(CreateView):
+    template_name = "gerenciador/signup.html"
+    form_class = SignUpForm
+    success_url = reverse_lazy('index')

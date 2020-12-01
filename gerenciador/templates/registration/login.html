@@ -1,0 +1,71 @@
+{% extends "gerenciador/base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block body %}
+
+<div class="am-signin-wrapper">
+  <div class="am-signin-box">
+
+    {% if form.errors %}
+
+    {% for erro in form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ erro }}
+    </div>
+    {% endfor %}
+
+    {% endif %}
+
+    {% if next and not form.errors %}
+
+    {% if user.is_authenticated %}
+    <div class="alert alert-danger" role="alert">
+      <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      Sua conta não tem acesso à esta págnia. Para continuar, entre com uma conta que tenha acesso.
+    </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+      <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      Por favor, faça login para ver essa página
+    </div>
+    {% endif %}
+
+    {% endif %}
+
+    <div class="row no-gutters">
+      <div class="col-lg-5">
+        <div>
+          <h2>Gerenciador</h2>
+          <hr>
+          <p>Ainda não tem uma conta?<br>
+            <a href="page-signup.html">Crie agora mesmo</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <h5 class="tx-gray-800 mg-b-25">Login</h5>
+        <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+
+          {% bootstrap_field form.username %}
+          {% bootstrap_field form.password %}
+
+          <div class="form-group mg-b-20"><a href="{# url 'password_reset' #}">Esqueci a senha</a></div>
+
+          <button class="btn btn-block" type="submit">Entrar</button>
+        </form>
+      </div><!-- col-7 -->
+    </div><!-- row -->
+    <p class="tx-center tx-white-5 tx-12 mg-t-15">Copyright &copy; 2020. Todos os direitos reservados. Gerenciador </p>
+  </div><!-- signin-box -->
+</div><!-- am-signin-wrapper -->
+
+{% endblock %}
