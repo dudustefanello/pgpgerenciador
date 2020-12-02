@@ -1,4 +1,5 @@
 from django.views.generic import RedirectView
+from django.contrib.auth import login
 
 from .models import EmailConfirmation
 
@@ -13,6 +14,7 @@ class EmailConfirmationView(RedirectView):
             user = EmailConfirmation.objects.get(token=token).user
             user.is_active = True
             user.save()
+            login(self.request, user)
         except EmailConfirmation.DoesNotExist:
             self.pattern_name = 'login'
         return super().get_redirect_url(*args, **kwargs)
