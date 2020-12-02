@@ -125,13 +125,13 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'c7ac54345a06f5'
-EMAIL_HOST_PASSWORD = '7b10b86fe56333'
+EMAIL_HOST = 'smtp.mailspons.com'
+EMAIL_HOST_USER = '258d890d6fde4dafa525'
+EMAIL_HOST_PASSWORD = 'e4f2f6d9fe5c4b94a08ff0c1c3fb5d99'
 EMAIL_PORT = '2525'
 
 # Tempo para o token de confirmação de email expirar em dias
-EMAIL_CONFIRMATION_EXPIRATION_TIME=7
-EMAIL_CONFIRMATION_FROM='no-replay@gerenciado.com.br'
+EMAIL_CONFIRMATION_EXPIRATION_TIME=999999999
+EMAIL_CONFIRMATION_FROM='no-replay@gerenciador.com.br'
 
 django_heroku.settings(locals())
