@@ -3,6 +3,7 @@ from django.contrib.auth import login
 
 from .models import EmailConfirmation
 
+
 class EmailConfirmationView(TemplateView):
     template_name = "email/email_confirmation.html"
 
