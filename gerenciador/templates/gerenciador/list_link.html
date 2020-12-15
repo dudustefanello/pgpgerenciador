@@ -20,7 +20,7 @@
         <tbody>
           {% for object in object_list %}
           <tr>
-            <td><a href="{{ object.link }}">{{ object.link }}</a></td>
+            <td><a href="{% url 'text' %}?link={{ object.link }}">{{ object.link }}</a></td>
           </tr>
           {% endfor %}
         </tbody>
