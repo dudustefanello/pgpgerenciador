@@ -67,7 +67,6 @@ class LinkList(ListView):
     template_name = 'gerenciador/list_link.html'
     
     
-    
 class SignUpView(CreateView):
     template_name = "gerenciador/signup.html"
     form_class = SignUpForm
