@@ -1,0 +1,53 @@
+<div
+  style="
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 2px;
+    padding: 20px;
+  "
+>
+  <h4
+    style="
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #32415a;
+    "
+  >
+    Olá {{ user_first_name }}
+  </h4>
+  <div>
+    <p>
+      Para confirmar o seu e-mail e utilizar a nossa plataforma, clique no botão
+      abaixo
+    </p>
+    <a
+      href="{{ confirmation_link }}"
+      target="_blank"
+      style="
+        display: inline-block;
+        font-weight: normal;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.65rem 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.25;
+        border-radius: 2px;
+        color: #fff;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+      "
+      >Confirmar email</a
+    >
+  </div>
+</div>

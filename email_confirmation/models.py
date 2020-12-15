@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.dispatch import receiver
 from django.core.mail import send_mail
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 
 class EmailConfirmation(models.Model):
@@ -42,15 +43,24 @@ class EmailConfirmation(models.Model):
         return self.token
 
     def send_email_confirmation(self):
+        confirmation_link = (
+            f"{settings.SITE_URL}{reverse('token_validation')}?token={self.token}"
+        )
+        html_email_content = render_to_string(
+            "email/html_email_template.html",
+            {
+                "user_first_name": self.user.first_name,
+                "confirmation_link": confirmation_link,
+            },
+        )
+
         send_mail(
             "Confirmação de Email",
-            (
-                f"Acesse o link abaixo para confirmar o seu e-mail.\n"
-                f"{settings.SITE_URL}{reverse('token_validation')}?token={self.token}"
-            ),
+            f"Acesse o link abaixo para confirmar o seu e-mail.\n{confirmation_link}",
             settings.EMAIL_CONFIRMATION_FROM,
             [self.user.email],
             fail_silently=False,
+            html_message=html_email_content,
         )
 
 

@@ -1,20 +1,20 @@
-from django.views.generic import RedirectView
+from django.views.generic import TemplateView
 from django.contrib.auth import login
 
 from .models import EmailConfirmation
 
-class EmailConfirmationView(RedirectView):
-    permanent = False
-    query_string = False
-    pattern_name = 'index'
+class EmailConfirmationView(TemplateView):
+    template_name = "email/email_confirmation.html"
 
-    def get_redirect_url(self, *args, **kwargs):
-        token = self.request.GET["token"]
+    def get_context_data(self, **kwargs):
+        token = self.request.GET.get('token')
+        context = {}
         try:
             user = EmailConfirmation.objects.get(token=token).user
             user.is_active = True
             user.save()
             login(self.request, user)
+            context["valid_token"] = True
         except EmailConfirmation.DoesNotExist:
-            self.pattern_name = 'login'
-        return super().get_redirect_url(*args, **kwargs)
+            context["valid_token"] = False
+        return context
