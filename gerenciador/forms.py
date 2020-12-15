@@ -16,6 +16,7 @@ class NewLinkForm(forms.Form):
     def is_valid(self):
         return super().is_valid() and self.valid_link()
 
+
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')

@@ -134,4 +134,7 @@ EMAIL_PORT = '2525'
 EMAIL_CONFIRMATION_EXPIRATION_TIME=999999999
 EMAIL_CONFIRMATION_FROM='no-replay@gerenciador.com.br'
 
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
 django_heroku.settings(locals())

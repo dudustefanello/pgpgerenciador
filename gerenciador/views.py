@@ -1,8 +1,7 @@
 import requests
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic import FormView, TemplateView, CreateView, ListView
-from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
 from gerenciador.forms import SignUpForm
 from django.urls import reverse_lazy
 
@@ -11,7 +10,11 @@ from gerenciador.models import LinksSalvos
 from gerenciador.parser import parse
 
 
-class NewLinkView(FormView):
+class LoginRedirectMixin(LoginRequiredMixin):
+    login_url = 'login'
+
+
+class NewLinkView(LoginRedirectMixin, FormView):
     template_name = "gerenciador/new_link.html"
     form_class = NewLinkForm
     success_url = "text"
@@ -32,7 +35,7 @@ class NewLinkView(FormView):
         return result
 
 
-class GetLinkText(TemplateView):
+class GetLinkText(LoginRedirectMixin, TemplateView):
     template_name = "gerenciador/text.html"
 
     def get_link_content(self):
@@ -62,10 +65,16 @@ class GetLinkText(TemplateView):
         return context
 
 
-class LinkList(ListView):
+class LinkList(LoginRedirectMixin, ListView):
     model = LinksSalvos
     template_name = 'gerenciador/list_link.html'
-    
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            return super().get_queryset().filter(user=self.request.user)
+        else:
+            return []
+
     
 class SignUpView(CreateView):
     template_name = "gerenciador/signup.html"
