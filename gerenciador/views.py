@@ -18,6 +18,11 @@ class NewLinkView(FormView):
 
     def form_valid(self, form):
         self.success_url = self.success_url + "?link=" + form.cleaned_data["link"]
+        if 'salvar' in self.request.POST:
+            link = LinksSalvos()
+            link.link = form.cleaned_data["link"]
+            link.user = self.request.user
+            link.save()
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -60,7 +65,8 @@ class GetLinkText(TemplateView):
 class LinkList(ListView):
     model = LinksSalvos
     template_name = 'gerenciador/list_link.html'
-
+    
+    
     
 class SignUpView(CreateView):
     template_name = "gerenciador/signup.html"
